@@ -4,6 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="COP2360-DictionaryProject.cs" />
+    <Compile Include="DictionaryProject.cs" />
   </ItemGroup>
 </Project>
