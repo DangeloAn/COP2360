@@ -8,6 +8,7 @@ bool continueProgram = true;
 // Loop to prompt user for input unless they quit
 while (continueProgram)
 {
+    Console.WriteLine(); // Print a blank line for better readability
     Console.WriteLine("Choose an option:");
     Console.WriteLine("1. Populate the Dictionary");
     Console.WriteLine("2. Display Dictionary");
@@ -17,7 +18,7 @@ while (continueProgram)
     Console.WriteLine("6. Sort the Keys");
     Console.WriteLine("0. Exit");
 
-    //Reads input
+    // Read Input
     string choice = Console.ReadLine();
 
     // a switch statement that will handle that input
@@ -37,7 +38,7 @@ while (continueProgram)
             AddNewKey(newDict);
             break;
         case "5":
-            AddValuetoExistingKey(newDict);
+            AddValueToExistingKey(newDict);
             break;
         case "6":
             SortAndDisplayKeys(newDict);
@@ -51,10 +52,11 @@ while (continueProgram)
 
 
     }
+    
 
 }
 
-// Defines the method populate dictionary 
+// Defines the method to populate the dictionary 
 static void PopulateDictionary(Dictionary<string, List<string>> dict)
 {
     dict["Orange"] = new List<string> { "Fruit" }; //adding new entrys to dict
@@ -66,6 +68,8 @@ static void PopulateDictionary(Dictionary<string, List<string>> dict)
 //Same thing just defines the method display dict
 static void DisplayDictionary(Dictionary<string, List<string>> dict)
 {
+    Console.WriteLine(); // Print a blank line for better readability
+
     if (dict.Count == 0)
     {
         Console.WriteLine("Dictionary is empty.");
@@ -113,4 +117,42 @@ static void AddNewKey(Dictionary<string, List<string>> dict)
     
     dict[key] = new List<string> { value };
     Console.WriteLine($"Key '{key}' with value '{value}' added successfully.");
+}
+
+// Add value to existing key
+static void AddValueToExistingKey(Dictionary<string, List<string>> dict)
+{
+    Console.WriteLine("Enter the existing key: ");
+    string key = Console.ReadLine();
+
+    // Check if the key exists in the dictionary
+    if (!dict.TryGetValue(key, out List<string> values))
+    {
+        Console.WriteLine($"Key '{key}' not found.");
+        return;
+    }
+
+    Console.WriteLine("Enter the additional value to add:");
+    string value = Console.ReadLine();
+    // Check if the value already exists in the list for that key
+    if (values.Contains(value))
+    {
+        Console.WriteLine($"Value '{value}' already exists.");
+    }
+    else
+    {
+        values.Add(value);
+        Console.WriteLine($"Added '{value}' to '{key}'");
+    }
+}
+
+// Sort and display keys
+static void SortAndDisplayKeys(Dictionary<string, List<string>> dict)
+{
+    var sortedKeys = dict.Keys.OrderBy(k => k).ToList();
+    Console.WriteLine("Keys have been sorted.");
+    foreach (var key in sortedKeys)
+    {
+        Console.WriteLine($"{key}: {string.Join(", ", dict[key])}");
+    }
 }
