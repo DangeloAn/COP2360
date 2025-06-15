@@ -18,7 +18,7 @@ while (continueProgram)
     Console.WriteLine("0. Exit");
 
     //Reads input
-    string choice = Consle.ReadLine();
+    string choice = Console.ReadLine();
 
     // a switch statement that will handle that input
     switch (choice)
@@ -66,9 +66,9 @@ static void PopulateDictionary(Dictionary<string, List<string>> dict)
 //Same thing just defines the method display dict
 static void DisplayDictionary(Dictionary<string, List<string>> dict)
 {
-    foreach (var keyVaulepair in dict) //loops over each item in the dictionary
+    foreach (var keyValuepair in dict) //loops over each item in the dictionary
     {
-        Console.WriteLine($"{keyVaulepair.Key}: {string.Join(", ", keyVaulepair.Value)}");
+        Console.WriteLine($"{keyValuepair.Key}: {string.Join(", ", keyValuepair.Value)}");
         // gives the current key and the list of strings assigned to the key, then converts it to single string separted by commas
     }
 
