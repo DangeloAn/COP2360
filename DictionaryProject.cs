@@ -66,10 +66,51 @@ static void PopulateDictionary(Dictionary<string, List<string>> dict)
 //Same thing just defines the method display dict
 static void DisplayDictionary(Dictionary<string, List<string>> dict)
 {
-    foreach (var keyValuepair in dict) //loops over each item in the dictionary
+    if (dict.Count == 0)
     {
-        Console.WriteLine($"{keyValuepair.Key}: {string.Join(", ", keyValuepair.Value)}");
-        // gives the current key and the list of strings assigned to the key, then converts it to single string separted by commas
+        Console.WriteLine("Dictionary is empty.");
+        return;
     }
 
+    foreach (var keyValuePair in dict) // Loops over each item in the dictionary
+    {
+        Console.WriteLine($"{keyValuePair.Key}: {string.Join(", ", keyValuePair.Value)}");
+        // Gives the current key and the list of strings assigned to the key, then converts it to single string separated by commas
+    }
+}
+
+// Defines the method to remove a key
+static void RemoveKey(Dictionary<string, List<string>> dict)
+{
+    Console.WriteLine("Enter the key to remove:");
+    string key = Console.ReadLine();
+
+    if (dict.ContainsKey(key))
+    {
+        dict.Remove(key);
+        Console.WriteLine($"Key '{key}' removed successfully.");
+    }
+    else
+    {
+        Console.WriteLine($"Key '{key}' not found in the dictionary.");
+    }
+}
+
+// Defines the method to add a new key and value
+static void AddNewKey(Dictionary<string, List<string>> dict)
+{
+    Console.WriteLine("Enter the new key:");
+    string key = Console.ReadLine();
+    
+    if (dict.ContainsKey(key))
+    {
+        Console.WriteLine($"Key '{key}' already exists. Use option 5 to add a value to an existing key.");
+        return;
+    }
+    
+    Console.WriteLine("Enter the value for the new key:");
+    string value = Console.ReadLine();
+    
+    dict[key] = new List<string> { value };
+    Console.WriteLine($"Key '{key}' with value '{value}' added successfully.");
 }
