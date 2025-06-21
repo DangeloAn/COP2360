@@ -1,5 +1,5 @@
 // bring in system namespace
-using stystem;
+using system;
 
 // defined a class named contractor and made it public so it can accessed in other parts
 public class Contractor
@@ -33,22 +33,21 @@ public class Contractor
         contractorName = name;
     }
 
-    public int GetContractNumber() // same idea returns the number
+    public int GetContractNumber() // same idea just for the contractor number
     {
         return contractorNumber;
     }
 
-    public void SetContractNumber(int number) // changes the number 
+    public void SetContractNumber(int number)  
     {
         contractorNumber = number;
     }
 
-    public DateTime GetStartDate() // returns the start date
-    {
+    public DateTime GetStartDate() // same idea for the start date
         return startDate;
     }
 
-    public void SetStartDate(DateTime date) // changes the start date 
+    public void SetStartDate(DateTime date) 
     {
         startDate = date;
     }
