@@ -1,5 +1,5 @@
 // bring in system namespace
-using system;
+using System;
 
 // defined a class named contractor and made it public so it can accessed in other parts
 public class Contractor
@@ -44,6 +44,7 @@ public class Contractor
     }
 
     public DateTime GetStartDate() // same idea for the start date
+    {
         return startDate;
     }
 
