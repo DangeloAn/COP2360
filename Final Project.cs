@@ -85,6 +85,30 @@ public class Subcontractor : Contractor
     {
         return hourlyPayRate;
     }
+
+    // Mutator methods
+    public void SetShift(int shift)
+    {
+        this.shift = shift;
+    }
+
+    public void SetHourlyPayRate(double rate)
+    {
+        hourlyPayRate = rate;
+    }
+
+    // Calculate pay with shift differential
+    public float CalculateWeeklyPay(float hoursWorked)
+    {
+        double pay = hoursWorked * hourlyPayRate;
+
+        // Apply 3% shift differential for night shifts
+        if (shift == 2)
+        {
+            pay *= 1.03; // Increase pay by 3%
+        }
+        return (float)pay; // return the pay as a float
+    }
 }
 
 // Program class to demonstrate the classes
@@ -126,6 +150,12 @@ class SubcontractorDemo
             Console.WriteLine($"Start Date: {subcontractor.GetStartDate():yyyy-MM-dd}");
             Console.WriteLine($"Shift: {subcontractor.GetShift()} (1 = day, 2 = night)");
             Console.WriteLine($"Hourly Pay Rate: ${subcontractor.GetHourlyPayRate():F2}");
+
+            // Calculate and display pay
+            Console.Write("\nEnter hours worked this week: ");
+            float hoursWorked = float.Parse(Console.ReadLine());
+            float weeklyPay = subcontractor.CalculateWeeklyPay(hoursWorked);
+            Console.WriteLine($"Weekly Pay: ${weeklyPay:F2}");
 
             // Ask if user wants to add another subcontractor
             Console.Write("\nAdd another subcontractor? (yes/no): ");
